@@ -16,7 +16,8 @@ module.exports = {
         'revert',
         'style',
         'test',
-        'config'
+        'config',
+        'course'
       ]
     ]
   }
