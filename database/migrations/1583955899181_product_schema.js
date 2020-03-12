@@ -26,9 +26,23 @@ class ProductSchema extends Schema {
       table.foreign('image_id').references('id').inTable('images').onDelete('cascade')
       table.foreign('product_id').references('id').inTable('products').onDelete('cascade')
     })
+
+    // tabela de relacionamento entre categorias e produtos
+    // Obs: 'category_product' tem que ser escrita desse jeito pois quando formos mexer com nossos Models para criar os relacionamentos ele vai buscar da seguinte forma: toda vez que buscarmos um relacionamento entre 2 Models o Adonis vai buscar pelo nome do Model em minúsculo separado por "_" e o nome do outro Model, e também em ordem alfabetica, é por isso que 'category' vem primeiro q 'product'
+
+    this.create('category_product', table => {
+      table.increments()
+      table.integer('product_id').unsigned()
+      table.integer('category_id').unsigned()
+
+      table.foreign('product_id').references('id').inTable('products').onDelete('cascade')
+      table.foreign('category_id').references('id').inTable('categories').onDelete('cascade')
+    }) 
+
   }
 
   down () {
+    this.drop('category_product')
     this.drop('image_product')
     this.drop('products')
   }
