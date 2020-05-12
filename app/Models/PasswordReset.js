@@ -3,6 +3,9 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
+// importando o objeto exportado usando destructuring
+const { str_random } = use('App/Helpers')
+
 class PasswordReset extends Model {
   static boot() {
     super.boot()
