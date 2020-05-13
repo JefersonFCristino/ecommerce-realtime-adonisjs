@@ -11,7 +11,7 @@ const Helpers = use('Helpers')
  * Generate random string
  * 
  * @param { int } length - O tamanho da string que você quer gerar
- * @param { string } - uma string randomica do tamanho do length
+ * @return { string } - uma string randomica do tamanho do length
  */
 
 const str_random = async(length = 40) => {
@@ -79,7 +79,7 @@ const manage_single_upload = async (file, path = null) => {
 const manage_multiple_uploads = async (fileJar, path = null) => {
   path = path ? path : Helpers.publicPath('uploads')
 
-  // Haverá situações onde vamos fazer upload de múltiplos arquivos e alguns desses faram o upload completo, outros seram rejeitados por não serem arquivos validos e outros por serem muito grandes e etc. Sendo assim teremos 2 tipos de retorno: Os arquivos que conseguimos processar com sucesso e os arquivos que deram erro no processamento 
+  // Haverá situações onde vamos fazer upload de múltiplos arquivos e alguns desses faram o upload completo, outros serão rejeitados por não serem arquivos válidos e outros por serem muito grandes e etc. Sendo assim teremos 2 tipos de retorno: Os arquivos que conseguimos processar com sucesso e os arquivos que deram erro no processamento 
   
   let successes = [], errors = []
 
@@ -107,5 +107,8 @@ const manage_multiple_uploads = async (fileJar, path = null) => {
 }
 
 module.exports = {
-  str_random
+  str_random,
+  manage_single_upload,
+  manage_multiple_uploads,
+  Helpers
 }
